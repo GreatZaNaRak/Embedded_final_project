@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script src="https://cdn.netpie.io/microgear.js"></script>
+<script>
+  const APPID = "STM32";
+  const KEY = "QCyD2adjzEp9I20";
+  const SECRET = "Jc5zv8sICs3DRssM6hMVctLAV";
+
+  const ALIAS = "Target_web";         //  ชื่อตัวเอง
+  const thing1 = "Budda";          //  ชื่อเพื่อนที่จะคุย
+
+  var microgear = Microgear.create({
+    key: KEY,
+    secret: SECRET,
+    alias : ALIAS
+  });
+
+  var re = 0;
+  var i = 0;
+
+  microgear.on('message',function(topic,msg) {
+	  document.getElementById("mint").innerHTML = String(msg)
+    var a = String(msg)
+    var b = a.substring(24)
+    re = parseInt(b)
+    
+  });
+
+  microgear.on('connected', function() {
+    microgear.setAlias(ALIAS);
+    document.getElementById("connected_NETPIE").innerHTML = "Connected to NETPIE"
+  });
+
+  microgear.on('present', function(event) {
+    console.log(event);
+  });
+
+  microgear.on('absent', function(event) {
+    console.log(event);
+  });
+
+  microgear.resettoken(function(err) {
+    microgear.connect(APPID);
+  });
+
+
+  // -------------------- just add disable button if you want but not that nesccary -------------------------
+
+  function f0() {
+    microgear.chat(thing1, 'G');
+    i = re;
+
+    if(i < 12) {
+      document.getElementById("pro").src = "picture/non_empty.png"
+      document.getElementById("gum").src = "picture/gumball_2.png"
+    } else {
+      document.getElementById("pro").src = "picture/empty.png"
+      document.getElementById("gum").src = "picture/gumball_3.png"
+    }
+
+  }
+
+  function f1() {
+    microgear.chat(thing1, 'Y');
+    document.getElementById("bul").src = "picture/p2.png"
+  }
+
+  function f2() {
+    microgear.chat(thing1, 'O');
+    document.getElementById("bul").src = "picture/p3.png"
+  }
+
+  function f3() {
+    microgear.chat(thing1, 'R');
+    document.getElementById("bul").src = "picture/p1.png"
+    document.getElementById("pro").src = "picture/process.gif"
+    document.getElementById("gum").src = "picture/gumball_1.png"
+  }
+
+</script>
+<style>
+
+    .column {
+      float: left;
+      width: 33.33%;
+      padding: 5px;
+    }
+
+    /* Clear floats after image containers */
+    .row::after {
+      content: "";
+      clear: both;
+      display: table;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .button0 {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: dodgerblue;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px #999;
+  }
+
+  .button0:active {
+    vertical-align: auto;
+    padding: 8px 13px 6px;
+  }
+
+  .button1:active {
+    vertical-align: auto;
+    padding: 8px 13px 6px;
+  }
+
+  .button2:active {
+    vertical-align: auto;
+    padding: 8px 13px 6px;
+  }
+
+  .button3:active {
+    vertical-align: auto;
+    padding: 8px 13px 6px;
+  }
+
+  
+  .button1 {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: gold;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px #999;
+  }
+
+  .button2 {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: crimson;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px #999;
+  }
+
+  .button3 {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px #999;
+  }
+
+  .button0:hover{
+    background-color: darkblue;
+    color: orange;
+  }
+  
+  .button1:hover{
+    background-color: darkorange;
+    color: red;
+  }
+
+  .button2:hover{
+    background-color: darkred;
+    color: orange;
+  }
+
+  .button3:hover{
+    background-color:darkgreen;
+    color: orange;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: chocolate;
+  }
+  </style>
+
+<ul style="background-color: black">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Our Product</a></li>
+  <li><a href="#">Contact</a></li>
+  <li><a href="#">About us</a></li>
+  <li><input style="padding: 5px; margin-top: 10px; margin-left: 800px; width: 200px;" placeholder="search"></li>
+  <li><button style="height: 28px; margin-top: 10px; margin-left: 10px; width: 5">FIND</button></li>
+</ul> 
+
+<h1 style="text-align: center;">Smart Shelf Checking System</h1>
+<h1 style="text-align: center;" id="connected_NETPIE">connection status</h1>
+
+
+
+<div style="text-align: center; margin-top: 50px;">
+  <img id="pro" src="picture/process.gif" style="margin-right: 175px;">
+  <img id="bul" src="picture/p1.png" style="margin-left: 150px;">
+</div>
+
+<br><br>
+
+
+
+<div>
+
+  <div style="text-align: center; margin-top: 50;">
+
+    <div style="margin: auto;">
+      <button id="b1" class="button0" onclick="f0()">STATUS</button>
+      <button id="b2" style="margin-left: 10px;" class="button1" onclick="f1()">WAIT</button>
+      <button id="b2" style="margin-left: 10px;" class="button2" onclick="f2()">OUT OF STOCK</button>
+      <button id="b2" style="margin-left: 10px;" class="button3" onclick="f3()">RESET</button>
+
+    </div>
+
+  </div>
+
+  <h1 style="text-align: center; margin-top: 30px; margin-bottom: 30px;" id='mint'>/* result */</h1>
+
+  <p><b>Instruction: </b>this is a program to check current status of product in shelf.</p>
+  <p><b>Hint1: </b>use status button to get the current status.(Empty/Able to fill/Normal)</p>
+  <p><b>Hint2: </b>press wait button to indicate the shelf that product is waiting for refil and press Out of stock to indicate that product is out of stock</p>
+
+  <div style="text-align: center;">
+    <img id="gum" src="picture/gumball_1.png">
+  </div>
+
+
+  <p style="text-align: right;">Copyright (c) 2019 by CP44 student, Subject to Embedded System Lab.</p>
+
+</div>
+</body>
+</html>

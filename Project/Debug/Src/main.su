@@ -1,0 +1,11 @@
+main.c:86:10:hcsr04_read	16	static
+main.c:114:5:main	72	static
+main.c:198:6:SystemClock_Config	104	static
+main.c:249:13:MX_I2C1_Init	8	static
+main.c:283:13:MX_I2S3_Init	8	static
+main.c:317:13:MX_SPI1_Init	8	static
+main.c:355:13:MX_USART2_UART_Init	8	static
+main.c:388:13:MX_GPIO_Init	56	static
+main.c:486:6:StartDefaultTask1	56	static
+main.c:510:6:StartDefaultTask2	24	static
+main.c:546:6:Error_Handler	4	static
